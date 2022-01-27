@@ -19,10 +19,11 @@ Route::get('/', function () {
 
 
 Route::prefix('admin')->group(function() {
-    
+
     Route::get('/', function() {
         return 'Hello World!';
     });
 
-    
+    Route::post('/products', [ProductsController::class, 'insertProducts']);
+
 });

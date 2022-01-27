@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('users_panel', function (Blueprint $table) {
             $table
                 ->id();
             $table
@@ -33,11 +33,7 @@ class CreateUsersTable extends Migration
                 ->nullable();
             $table
                 ->string('address');
-            $table
-                ->foreignId('id_type_user')
-                ->constrained('type_user')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->unsignedBigInteger('id_type_users');
             $table
                 ->rememberToken();
             $table
