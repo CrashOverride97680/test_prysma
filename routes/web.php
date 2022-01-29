@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProductsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +23,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/', function() {
         return 'Hello World!';
     });
-
+    Route::get('/list', [ProductsController::class, 'products_view']);
     Route::post('/list', [ProductsController::class, 'insertProducts']);
 
 });
