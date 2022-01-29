@@ -17,8 +17,9 @@ class CreateListTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->foreignId('type_prod_serv');
-            $table->timestamps();
+            $table->float('cost')->nullable();
+            $table->string('unit_of_measure');
+            $table->float('discount')->nullable();
         });
     }
 

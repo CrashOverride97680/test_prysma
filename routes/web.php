@@ -24,6 +24,6 @@ Route::prefix('admin')->group(function() {
         return 'Hello World!';
     });
 
-    Route::post('/products', [ProductsController::class, 'insertProducts']);
+    Route::post('/list', [ProductsController::class, 'insertProducts']);
 
 });

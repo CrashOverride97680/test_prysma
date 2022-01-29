@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateUserPanelTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,6 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users_panel', function (Blueprint $table) {
             $table
                 ->id();
+            $table
+                ->unsignedBigInteger('id_type_user');
             $table
                 ->string('company_name');
             $table
@@ -33,11 +35,18 @@ class CreateUsersTable extends Migration
                 ->nullable();
             $table
                 ->string('address');
-            $table->unsignedBigInteger('id_type_users');
             $table
                 ->rememberToken();
             $table
                 ->timestamps();
+        });
+
+        Schema::table('users_panel', function (Blueprint $table) {
+            $table
+                ->foreign('id_type_user')
+                ->references('id')
+                ->on('type_users')
+                ->onDelete('cascade');
         });
     }
 
@@ -48,6 +57,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('user_panel');
     }
 }
