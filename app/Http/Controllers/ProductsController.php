@@ -1,19 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\list_model;
 
 class ProductsController extends Controller
 {
     public function insertProducts(Request $request)
     {
-        $name_prod = $request->input('name_prod');
-        $name_representative = $request->input('name_representative');
-        $email = $request->input('email');
-        $phone_number = $request->input('phone_number');
-        $address = $request->input('address');
+        error_log(request('name_prod'));
+    }
 
-        print_r($name_prod);
+    public function products_view() {
+        return view('products');
     }
 }
